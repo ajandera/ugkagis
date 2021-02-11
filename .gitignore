@@ -1,0 +1,10 @@
+.idea/
+layout/
+api/composer.lock
+api/.phpcomplete_extended
+docker/.data/db
+node_modules
+sass
+composer.phar
+package-lock.json
+adminer.php

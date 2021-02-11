@@ -1,0 +1,8 @@
+doctrine:
+    host: db
+    user: root
+    password: root
+    dbname: ugkagis
+
+services:
+    storageManager: App\Model\StorageManager\StorageManager(%wwwDir%, 'hirbid')

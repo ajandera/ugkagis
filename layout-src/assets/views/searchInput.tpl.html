@@ -1,0 +1,12 @@
+<div>
+    <input
+            type="text"
+            class="form-control"
+            placeholder="Search ..."
+            ng-model="searchString"
+            ng-change="search()"
+            ng-model-options="{debounce: 750}">
+</div>
+<ul class="search-input">
+    <li ng-repeat="item in inputModel" ng-if="item.name.length > 1" ng-click="select(item.id, item.name)">{{ item.name }}</li>
+</ul>

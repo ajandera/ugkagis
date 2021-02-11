@@ -1,0 +1,83 @@
+<!-- start: BREADCRUMB -->
+<div class="breadcrumb-wrapper">
+    <h4 class="mainTitle no-margin" translate="sidebar.nav.users.TITLE">Users</h4>
+    <div ncy-breadcrumb class="pull-right"></div>
+</div>
+<!-- end: BREADCRUMB -->
+<!-- start: USERS -->
+<div ng-controller="UsersCtrl">
+    <div class="preloader" ng-if="dataLoaded == false"></div>
+    <div class="container-fluid container-fullw" ng-if="dataLoaded == true">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-white">
+                    <div class="panel-body">
+                        <div class="col-md-6">
+                            <h5 class="over-title margin-bottom-15"><span class="text-bold" translate="users.title">Users</span></h5>
+                        </div>
+                        <div class="col-md-6">
+                            <a class="pull-right btn btn-primary" ng-click="addUser()"><i class="glyphicon glyphicon-plus"></i> <span translate="users.add">Add User</span></a>
+                        </div>
+                        <div class="col-md-12 margin-top-30">
+                            <div id="usersGrid" ui-grid="gridOptions" class="uiGrid" ui-grid-selection ng-style="getTableHeight(400)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/ng-template" id="addUser.html">
+    <form>
+        <div class="modal-header">
+            <h3 class="modal-title">{{ form.title }}</h3>
+        </div>
+        <div class="modal-body">
+            <div class="row margin-top-30">
+                <div class="col-md-6 col-xs-12">
+                    <label translate="users.name" class="margin-top-15 control-label-required">First Name</label> <span ng-if="nameToShort !== false" class="error">{{ nameToShort }}</span>
+                    <input type="text" ng-model="usersForm.name" class="form-control" reguired>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <label translate="users.surname" class="margin-top-15 control-label-required">Last Name</label> <span ng-if="surnameToShort !== false" class="error">{{ surnameToShort }}</span>
+                    <input type="text" ng-model="usersForm.surname" class="form-control" reguired>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <label class="margin-top-15 control-label-required"><span translate="users.login">Login</span> <span translate="users.notUnique" class="remove" ng-hide="uniqueEmail">is not unique</span> <span translate="users.invalidEmail" class="remove" ng-hide="invalidEmail">is not valid</span></label>
+                    <input type="email" ng-model="usersForm.username" class="form-control" ng-readonly="passwordHide" reguired ng-change="isUniqueEmail()">
+                </div>
+                 <div class="col-md-6 col-xs-12" ng-hide="passwordHide">
+                    <label translate="users.password" class="margin-top-15 control-label-required">Password</label> <span ng-if="usersForm.password.length < 5" translate="users.passwordToShot" class="error" >Minimal length is 5 </span>
+                    <input type="password" ng-model="usersForm.password" class="form-control" reguired>
+                 </div>
+                 <div class="col-md-6 col-xs-12" ng-hide="passwordHide">
+                     <label class="margin-top-15"><span translate="users.loginCheck">Login check</span> <span ng-if="usersForm.username !== usersForm.usernameCheck" translate="users.emailNotSame" class="error" >is not same </span></label>
+                     <input type="email" ng-model="usersForm.usernameCheck" class="form-control" ng-readonly="passwordHide" reguired>
+                 </div>
+                 <div class="col-md-6 col-xs-12" ng-hide="passwordHide">
+                    <label translate="users.passwordCheck" class="margin-top-15">Password Check</label> <span ng-if="usersForm.password !== usersForm.passwordCheck" translate="users.passwordNotSame" class="error" >is not same </span>
+                    <input type="password" ng-model="usersForm.passwordCheck" class="form-control" reguired>
+                </div>
+                 <div class="col-md-6 col-xs-12">
+                    <label translate="users.phone" class="margin-top-15">Phone Number</label> <span ng-if="phoneFail == true" translate="partners.badPhone" class="error">Only Numbers are allowed</span>
+                     <phone-number output-model="usersForm.phone" validate-fn="" output-validate="phoneFail"></phone-number>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <label translate="users.role" class="margin-top-15 control-label-required">Role</label>
+                    <select class="form-control" ng-model="usersForm.role" ng-options="role.id as role.name for role in roles" reguired></select>
+                </div>
+                <div class="col-md-6 col-xs-12" style="margin-top: 20px">
+                    <div class="checkbox clip-check check-primary checkbox-inline">
+                         <input class="form-control" type="checkbox" ng-model="usersForm.enabled" ng-checked="usersForm.enabled" id="checkbox4">
+                         <label  for="checkbox4" translate="users.enabled" class="margin-top-15">Enabled</label>
+                     </div>
+                </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button ng-disabled="disableSave" class="btn btn-success" ng-click="ok($event)">Save</button>
+        <button class="btn btn-default" ng-click="cancel($event)">Cancel</button>
+    </div>
+    </form>
+</script>
+<!-- end: USERS -->

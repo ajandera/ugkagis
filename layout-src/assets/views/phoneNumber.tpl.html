@@ -1,0 +1,9 @@
+<div>
+    <div class="col-xs-6 noPadding">
+        <select ng-model="number.dial" ng-options="item.dial_code as item.name+'/'+item.dial_code for item in dials" class="form-control"></select>
+    </div>
+    <div class="col-xs-6 noPadding">
+        <input type="number" ng-model="number.phone" ng-change="validateFn()" class="form-control">
+    </div>
+    <p ng-if="dialEmpty === true" translate="dial.empty">Please fill country dial</p>
+</div>

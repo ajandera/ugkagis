@@ -1,0 +1,54 @@
+<!-- start: FORGOT -->
+<div class="row" ng-controller="LoginCtrl" ng-init="checkToken()">
+    <div class="ext-box" ng-style="{'margin-top': marginTop}">
+        <div class="int-box">
+            <div class="main-login login">
+                <div class="col-xs-12 margin-top-20">
+                    <div class="logo text-center">
+                        <img src="assets/images/logo.png" alt="{{app.name}}" class="img-responsive" />
+                    </div>
+                    <p class="text-center text-dark text-bold text-extra-large margin-top-15 loginTextGray">
+                        <span class="logIn" translate="login.restorePw">Restore Password</span>
+                    </p>
+                    <div class="loginDivider"></div>
+                    <!-- start: LOGIN BOX -->
+                    <div class="preloader" ng-show="loginFormDataLoading"></div>
+                    <div class="box-login" ng-hide="loginFormDataLoading">
+                        <form class="form-forgot" ng-hide="loginFormDataLoading">
+                            <div class="form-group">
+                                <span ng-if="password.length < 5" translate="users.passwordToShot" class="error" >Minimal length is 5 </span>
+                                <input type="password" class="form-control" name="password" placeholder="Password" ng-model="password" ng-style="newEmpty">
+                            </div>
+                            <div class="form-group">
+                                <span ng-if="password !== passwordCheck" translate="users.passwordNotSame" class="error" >is not same </span>
+                                <input type="password" class="form-control" name="passwordCheck" placeholder="Password for check" ng-model="passwordCheck">
+                            </div>
+                            <div class="form-actions">
+                                <button
+                                        ng-disabled="password.length < 5 || password !== passwordCheck"
+                                        ng-click="restorePassword()"
+                                        type="submit"
+                                        class="btn btn-blue btn-block"
+                                        translate="login.submit">
+                                    Submit
+                                </button>
+                            </div>
+                            <div class="text-center">
+                                <br>
+                                <a ui-sref="front.jobs" translate="login.back"> Back to login </a>
+                            </div>
+                        </form>
+                        <!-- start: COPYRIGHT
+                        <div class="copyright">
+                            {{app.year}} &copy; {{ app.name }} by {{ app.author }}.
+                        </div>
+                        end: COPYRIGHT -->
+                    </div>
+                    <!-- end: LOGIN BOX -->
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!-- end: FORGOT -->

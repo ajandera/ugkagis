@@ -8,3 +8,4 @@ sass
 composer.phar
 package-lock.json
 adminer.php
+api/vendor

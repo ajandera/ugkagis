@@ -1,0 +1,70 @@
+<!-- start: BREADCRUMB -->
+<div class="breadcrumb-wrapper">
+    <h4 class="mainTitle no-margin" translate="sidebar.nav.languages.TITLE">Languages</h4>
+    <div ncy-breadcrumb class="pull-right"></div>
+</div>
+<!-- end: BREADCRUMB -->
+<!-- start: CURRENCY -->
+<div ng-controller="LanguagesCtrl">
+    <div class="preloader" ng-if="dataLoaded == false"></div>
+    <div class="container-fluid container-fullw" ng-if="dataLoaded == true">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-white">
+                    <div class="panel-body">
+                        <div class="col-md-6">
+                            <h5 class="over-title margin-bottom-15"><span class="text-bold" translate="languages.title">Languages</span></h5>
+                        </div>
+                        <div class="col-md-6">
+                            <a class="pull-right btn btn-primary" ng-click="addLanguage()"><i class="glyphicon glyphicon-plus"></i> <span translate="languages.add">Add Language</span></a>
+                        </div>
+                        <div class="col-md-12 margin-top-30">
+                            <div id="languagesGrid" ui-grid="gridOptions" class="uiGrid" ui-grid-selection ng-style="getTableHeight(400)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/ng-template" id="addLanguage.html">
+    <div class="modal-header">
+        <h3 class="modal-title">{{ form.title }}</h3>
+    </div>
+    <div class="modal-body">
+        <div class="row margin-top-30">
+            <form>
+                <div class="col-md-6 col-xs-12">
+                    <label translate="languages.name" class="margin-top-15 control-label-required">Name</label>
+                    <input type="text" ng-model="languagesForm.name" class="form-control">
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <label translate="languages.code" class="margin-top-15 control-label-required">Code</label>
+                    <input type="text" ng-model="languagesForm.code" class="form-control">
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <label translate="languages.translationCode" class="margin-top-15 control-label-required">Translation Code</label>
+                    <input type="text" ng-model="languagesForm.translation_code" class="form-control">
+                </div>
+                <div class="cleafix"></div>
+                <div class="col-md-6 col-xs-12">
+                    <div class="checkbox clip-check check-primary checkbox-inline">
+                        <input type="checkbox" ng-model="languagesForm.visible" class="" id="checkbox1" ng-checked="languagesForm.visible === 1">
+                        <label for="checkbox1" translate="languages.visible">Visibility languages</label>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <div class="checkbox clip-check check-primary checkbox-inline">
+                        <input type="checkbox" ng-model="languagesForm.defaults" ng-checked="languagesForm.defaults === 1" class="" id="checkbox2">
+                        <label  for="checkbox2" translate="languages.defaults">Default languages</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success" ng-click="ok($event)">Save</button>
+        <button class="btn btn-default" ng-click="cancel($event)">Cancel</button>
+    </div>
+</script>
+<!-- end: CURRENCY -->

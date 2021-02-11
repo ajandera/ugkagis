@@ -1,0 +1,66 @@
+<!-- start: BREADCRUMB -->
+<div class="breadcrumb-wrapper">
+    <h4 class="mainTitle no-margin" translate="sidebar.nav.emailTemplates.TITLE">EmailTemplates</h4>
+    <div ncy-breadcrumb class="pull-right"></div>
+</div>
+<!-- end: BREADCRUMB -->
+<!-- start: EMAIL TEMPLATES -->
+<div ng-controller="EmailTemplatesCtrl">
+    <div class="preloader" ng-if="dataLoaded == false"></div>
+    <div class="container-fluid container-fullw" ng-if="dataLoaded == true">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-white">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h5 class="over-title margin-bottom-15"><span class="text-bold" translate="emailTemplates.title">EmailTemplates</span></h5>
+                            </div>
+                            <div class="col-sm-6">
+                                <a class="pull-right btn btn-primary" ng-click="addEmailTemplates()"><i class="glyphicon glyphicon-plus"></i> <span translate="emailTemplates.add">Add User</span></a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 margin-top-30">
+                                <div id="emailTemplatesGrid" ui-grid="gridOptions" class="uiGrid" ui-grid-selection ng-style="getTableHeight(400)"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/ng-template" id="addEmailTemplates.html">
+    <div class="modal-header">
+        <h3 class="modal-title">{{ form.title }}</h3>
+    </div>
+    <div class="modal-body">
+        <div class="row margin-top-30">
+            <form>
+                <div class="col-xs-12">
+                    <label translate="emailTemplates.name" class="margin-top-15 control-label-required">Name</label>
+                    <input type="text" ng-model="emailTemplatesForm.name" class="form-control">
+                </div>
+                <div class="col-xs-12">
+                    <label translate="emailTemplates.type" class="margin-top-15 control-label-required">Event</label>
+                    <select ng-model="emailTemplatesForm.type" ng-options="event.id as event.name for event in events" class="form-control" ng-change="checkVariables(emailTemplatesForm.type)"></select>
+                    <p ng-if="availableVariables !== false">Available variables: <strong>{{ availableVariables }}</strong></p>
+                </div>
+                <div class="col-xs-12">
+                    <label translate="emailTemplates.subject" class="margin-top-15 control-label-required">Subject</label>
+                    <input type="text" ng-model="emailTemplatesForm.subject" class="form-control" ng-disabled="emailTemplatesForm.type === 6 || emailTemplatesForm.type === 7">
+                </div>
+                <div class="col-xs-12">
+                    <label translate="emailTemplates.body" class="margin-top-15 control-label-required">Body</label>
+                    <summernote height="300" ng-model="emailTemplatesForm.body"></summernote>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success" ng-click="ok($event)">Save</button>
+        <button class="btn btn-default" ng-click="cancel($event)">Cancel</button>
+    </div>
+</script>
+<!-- end: EMAIL TEMPLATES -->

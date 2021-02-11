@@ -1,0 +1,199 @@
+<!-- start: LANDING PAGE -->
+<div class="landing-page" ng-controller="MainFrontCtrl as vm">
+    <div id="section-0">
+        <div class="navbar navbar-default" id="landing-header" role="navigation" landing-header>
+            <!-- start: TOP NAVIGATION CONTAINER -->
+            <div class="container">
+                <div class="navbar-header">
+                    <!-- start: RESPONSIVE MENU TOGGLER -->
+                    <a class="landing-menu-toggler btn btn-red hidden-sm hidden-md hidden-lg mobile-button" id="landing-menu-toggler" ng-click="landingNavbarCollapsed = !landingNavbarCollapsed">
+                        <span class="sr-only">Toggle navigation</span> <i class="fa fa-bars"></i>
+                    </a>
+                    <!-- end: RESPONSIVE MENU TOGGLER -->
+                    <!-- start: LOGO -->
+                    <a ui-sref="front.jobs" class="navbar-brand" ng-if="homepage == false">
+                        <img src="assets/images/logo.png" alt="Hirbid">
+                    </a>
+                    <a href="#section-0" ng-click="goTo('section-0')" class="navbar-brand" ng-if="homepage == true">
+                        <img src="assets/images/logo.png" alt="Hirbid">
+                    </a>
+                    <!-- end: LOGO -->
+                </div>
+                <div class="navbar-collapse collapse" uib-collapse="landingNavbarCollapsed" ng-init="landingNavbarCollapsed = true" off-click="landingNavbarCollapsed = true" off-click-if='!landingNavbarCollapsed' off-click-filter="'#landing-menu-toggler'">
+                    <ul class="nav navbar-nav navbar-right" ct-fullheight="window" data-ct-fullheight-exclusion="#landing-header" data-ct-fullheight-if="isSmallDevice">
+                        <li class="active">
+                            <a ui-sref="front.home" ng-if="homepage == false">
+                                Home
+                            </a>
+                            <a ng-click="goTo('section-0')" ng-if="homepage == true">
+                                Home
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- start: MENU TOGGLER FOR MOBILE DEVICES -->
+                    <div class="close-handle visible-xs-block menu-toggler" ng-click="landingNavbarCollapsed = true" ng-swipe-up="landingNavbarCollapsed = true">
+                        <div class="arrow-left"></div>
+                        <div class="arrow-right"></div>
+                    </div>
+                    <!-- end: MENU TOGGLER FOR MOBILE DEVICES -->
+                </div>
+            </div>
+            <!-- end: TOP NAVIGATION CONTAINER -->
+        </div>
+        <div class="landing-content dots-left dots-white">
+            <!-- todo slider -->
+        </div>
+        <div ui-view class="fade-in-right-big smooth" id="content"></div>
+    </div>
+    <!-- end: SECTION 1 -->
+    <!-- start: SECTION 5 -->
+    <div id="section-5">
+        <section class="container-fluid container-fullw padding-bottom-30 section-contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="text-center" translate="front.contactUs">Contact Us</h2>
+                        <p class="center margin-bottom-30" translate="front.contactInfo">
+                            International software development agency focused on development of enterprise, web and mobile applications around the globe
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-lg-offset-3">
+                        <address>
+                            <h4 class="margin-bottom-5 text-red" translate="front.offices">Our Offices:</h4>
+                            <p><strong>United Kingdom</strong></p>
+                            Address: Shelton Street 71-75, Covent Garden, London, WC2H 9JQ,
+                            <br>
+                            <abbr title="Phone">P:</abbr> +44 (0) 754 678 6492
+                            <br><br>
+                            <p><strong>Czech Republic</strong></p>
+                            Address: Argentinská 286/38, Holešovice, 170 00 Praha-Praha 7
+                            <br>
+                            <abbr title="Phone">P:</abbr> +420 739 384 843
+                            <br><br>
+                            <p><strong>Slovakia</strong></p>
+                            Address: Karvaša a Bláhovca 3605/50B, 038 61 Vrútky
+                            <br>
+                            <abbr title="Phone">P:</abbr> +421 919 261 131
+                        </address>
+                    </div>
+                    <div class="col-lg-4">
+                        <h4 class="margin-bottom-5 text-red" translate="front.workHours">Working Hours</h4>
+                        <p>Monday - Friday - 8am to 5pm</p>
+                        <p>Saturday - 9am to 2pm (only LONDON)</p>
+                        <p>Sunday - Closed</p>
+                    </div>
+                </div>
+                <div class="row" id="about">
+                    <div class="col-md-12 text-center">
+                        <p class="margin-top-20">
+                            Hirbid is new platform for IT job offers designed for highest comfort of IT staff.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <p class="margin-top-20">
+                            &copy; {{app.year}} <span class="text-bold text-uppercase">{{ app.author }}</span> <span translate="footer.copyright.MESSAGE">All rights reserved</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- end: SECTION 5 -->
+</div>
+<script type="text/ng-template" id="logIn.html">
+    <form ng-submit="ok($event)">
+        <div class="modal-header">
+            <h3 class="modal-title">Sign In</h3>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-12 margin-bottom-20" ng-if="flashMessage">
+                    <p class="alert alert-{{ flashMessage.class }}">{{ flashMessage.text }}</p>
+                </div>
+            </div>
+            <div class="row margin-top-10">
+                <div class="col-xs-12 col-sm-6 padding-top-10">
+                    <div class="col-xs-12 text-center">
+                        <p translate="front.socialLogin.google.info">Use Google account to sign In</p>
+                        <button class="btn btn-red" g-login type="button">
+                            <i class="fa fa-google"></i> <span translate="front.socialLogin.google.btn">Google Login</span>
+                        </button>
+                    </div>
+                    <div class="col-xs-12 text-center padding-top-30">
+                        <p translate="front.socialLogin.linkedin.info">Use LinkedIn account to sign In</p>
+                        <button class="btn btn-primary" linked-in type="button">
+                            <i class="fa fa-linkedin"></i> <span translate="front.socialLogin.linkedin.btn">LinkedIn Login</span>
+                        </button>
+                    </div>
+                    <div class="col-xs-12 margin-top-10">
+                        <div translate="socialLogin.info"></div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <div class="col-xs-12">
+                        <label translate="front.signIn.email" class="margin-top-15">Email</label>
+                        <input type="text" ng-model="signIn.username" ng-change="checkRole()" ng-option="{debounce: 750}" class="form-control">
+                    </div>
+                    <div class="col-xs-12">
+                        <label translate="front.signIn.password" class="margin-top-15">Password</label>
+                        <input type="password" ng-model="signIn.password" class="form-control">
+                    </div>
+                    <div class="col-xs-12 hidden">
+                        <label translate="front.signUp.type" class="margin-top-15">Type</label>
+                        <select class="form-control" ng-init="signIn.role = 2" ng-model="signIn.role" ng-options="type.id as type.name for type in types"></select> 
+                    </div>
+                    <div class="col-xs-12 margin-top-10 text-right">
+                        <a href="#" ng-click="showForgot()" translate="front.forgotPw">Forgot your password?</a>
+                        <div class="input-group" ng-show="show == true">
+                            <input type="text" class="form-control" ng-model="forgotEmail" placeholder="Your Email" ng-style="newEmpty">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" ng-click="sendForgotPassword(forgotEmail)" type="button">Send</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-success" ng-disabled="disableLoggin == true">Sign In</button>
+            <button type="button" class="btn btn-default" ng-click="cancel($event)">Cancel</button>
+        </div>
+    </form>
+</script>
+<script type="text/ng-template" id="restore.html">
+    <form ng-submit="ok($event)">
+        <div class="modal-header">
+            <h3 class="modal-title">Forgot password</h3>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-12 margin-bottom-20" ng-if="flashMessage">
+                    <p class="alert alert-{{ flashMessage.class }}">{{ flashMessage.text }}</p>
+                </div>
+            </div>
+            <div class="row margin-top-10">
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password" placeholder="Password" ng-model="password" ng-style="newEmpty">
+                </div>
+                <div class="form-group hasError">
+                    <input type="password" class="form-control" name="passwordCheck" placeholder="Password for check" ng-model="passwordCheck" ng-style="newEmpty">
+                    <span class="error">{{ errorMessage }}</span> 
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-blue btn-block" ng-click="restorePassword()" translate="login.submit">
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Sign In</button>
+            <button class="btn btn-default" ng-click="cancel($event)">Cancel</button>
+        </div>
+    </form>
+</script>
+<!-- end: LANDING PAGE -->

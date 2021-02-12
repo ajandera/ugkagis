@@ -1,0 +1,241 @@
+{
+    "flagstyle": "flag-icon-us",
+    "search": {
+        "PLACEHOLDER": "Enter search text here..."
+    },
+    "topbar": {
+        "user": {
+            "PROFILE": "My Profile",
+            "CALENDAR": "My Calendar",
+            "MESSAGES": "My Messages",
+            "LOCKSCREEN": "Lock Screen",
+            "LOGOUT": "Log Out"
+        }
+    },
+    "sidebar": {
+        "heading": {
+            "NAVIGATION": "Main Navigation",
+            "SETUP": "Setup",
+            "ADMINISTRATION": "Administration",
+            "TEMPLATE": "Template showcase",
+            "FEATURES": "Core Features",
+            "DOCUMENTATION": "Documentation"
+        },
+        "nav": {
+            "dashboard": {
+                "MAIN": "UGKAGIS",
+                "FRONT": "Website front"
+            },
+            "categories": {
+                "MAIN": "Categories",
+                "TITLE": "Categories"
+            },
+            "emailTemplates": {
+                "MAIN": "Email Templates",
+                "TITLE": "Email Templates"
+            },
+            "users": {
+                "MAIN": "Users",
+                "TITLE": "Users"
+            },
+            "documents": {
+                "MAIN": "Documents",
+                "TITLE": "Documents"
+            },
+            "languages": {
+                "MAIN": "Languages",
+                "TITLE": "Languages"
+            },
+            "cms": {
+                "MAIN": "CMS",
+                "TITLE": "CMS"
+            },
+            "login": {
+                "MAIN": "Login",
+                "LOGIN": "Login Form",
+                "REGISTRATION": "Registration Form",
+                "FORGOT": "Forgot Password Form",
+                "LOCKSCREEN": "Lock Screen"
+            },
+            "landing": {
+                "MAIN": "Landing Page"
+            },
+        }
+    },
+    "footer": {
+        "copyright": {
+            "MAIN": "Copyright",
+            "MESSAGE": " by UGKAGIS. All rights reserved"
+        }
+    },
+    "common": {
+        "reply": "Send Message",
+        "close": "Close",
+        "delete": "Delete",
+        "add": "Add",
+        "save": "Save",
+        "cancel": "Cancel",
+        "failed": "Failed",
+        "success": "Success",
+        "sure": "Are you sure?",
+        "no": "No",
+        "yes": "Yes",
+        "recreate": "This user was deleted, do you want to re-create account again",
+        "requiredFields": "Please fill all required fields",
+        "accept": "Accept",
+        "decline": "Decline",
+        "record": {
+            "created": "Record was successfully created",
+            "notSaved": "Record was not saved.",
+            "updates": "Record was updated.",
+            "fail": "Request failed.",
+            "send": "Successfully send",
+            "delete": "Record was successfully deleted",
+            "notSend": "Sending was not success."
+        },
+        "user": {
+            "notSaved": "User was not saved",
+            "registered": "You was successfully registered.",
+            "notRegistered": "You was not registered due to technical problems.",
+            "notUnique": "User with same email exist.",
+            "notDeleted": "User was not deleted."
+        },
+        "minLength": "Minimal length",
+        "grid": {
+            "activity": {
+                "edit": "Edit Record",
+                "delete": "Delete Record",
+                "duplicate": "Duplicate Record",
+                "detail": "Record Detail",
+                "resetPassword": "Reset Password",
+                "decline": "Decline",
+                "accept": "Accept",
+                "documents": "Documents"
+            }
+        }
+    },
+    "login": {
+        "WRONG_PASSWORD": "Login or password is incorrect",
+        "AUTH_ERROR": "Authentication didn't succeed. Please contact web administrator.",
+        "EMAIL_NOT_FOUND": "Your email was not found in users database.",
+        "forgotMessage": "Enter your e-mail address below to reset your password.",
+        "btn" :"Login",
+        "submit": "Submit",
+        "technicalError": "Technical issue occurred. Please contact web administrator",
+        "passwordSend": "New password was sent to your address",
+        "back": "Back to login",
+        "forgotLink": "I forgot my password",
+        "logIn": "LOG IN",
+        "remember": "Remember me",
+        "success": "success",
+        "forgotPw": "Forgot Password?",
+        "restorePw": "Change your password"
+    },
+    "users": {
+        "title": "Users",
+        "name": "Name",
+        "role": "Role",
+        "login": "Email",
+        "delete": "Delete",
+        "add": "Add User",
+        "surname": "Surname",
+        "password": "Password",
+        "phone": "Phone number",
+        "notUnique": "is not unique",
+        "save": "Save",
+        "cancel": "Cancel",
+        "resetPassword": "Reset Password",
+        "notSaved": "User was not saved",
+        "permissions": {
+            "admin": "Administrator"
+        },
+        "emailNotSame": "Emails are not same.",
+        "passwordNotSame": "Passwords  are not same.",
+        "passwordToShot": "minimul length 5",
+        "loginCheck": "Email for check",
+        "passwordCheck": "Password for check",
+        "actions": "Actions",
+        "enabled": "Enabled"
+    },
+    "documents": {
+        "title": "Documents",
+        "maxSize": "Max upload size is 5 Mb"
+    },
+    "languages": {
+        "title": "Languages",
+        "name": "Name",
+        "code": "Code",
+        "translationCode": "Translation code",
+        "defaults": "Default Language",
+        "visible": "Show on frontend",
+        "add": "Add Language"
+    },
+    "cms": {
+        "title": "CMS",
+        "name": "Name",
+        "description": "Content",
+        "add": "Add CMS"
+    },
+    "emailTemplates": {
+        "title": "Email Templates",
+        "name": "Name",
+        "add": "Add Email Template",
+        "subject": "Subject",
+        "body": "Body",
+        "type": "Event"
+    },
+    "categories": {
+        "title": "Categories",
+        "add": "Add Category",
+        "name": "Name",
+        "description": "Description"
+    },
+    "front": {
+        "signIn": {
+            "email": "Email",
+            "password": "Password",
+            "userDisabled": "Account has been disabled."
+        },
+        "personal": {
+            "info": "Personal Info",
+            "name": "Name",
+            "surname": "Surname",
+            "email": "Email",
+            "password": "Password",
+            "passwordCheck": "Password Again",
+            "saved": "Personal Info was successfully updated.",
+            "error": "An error occurred, please try again later.",
+            "passwordNotSame": "Inserted password are not same.",
+            "passwordTooShort": "Minimal length of password is 5 characters.",
+            "passwordSaved": "Your password was updated",
+            "description": "Change your personal info or password.",
+            "changePassword": "Change password",
+            "locality": "Locality",
+            "category": "Category",
+            "linkedin": "LinkedIn profile",
+            "availableDate": "Available Date",
+            "immediately": "Available immediately",
+            "phone": "Phone",
+            "job": "Job",
+            "activeContact": "Active Contact from Companies",
+            "sendError": "Technical error occurred",
+            "remote": "Remote Available"
+        },
+        "contactUs": "Contact us",
+        "contactInfo": ""
+    },
+    "profile": {
+        "info": "Profile",
+        "description": "Info about your account",
+        "name": "Name",
+        "surname": "Surname",
+        "email": "Email",
+        "password": "Password",
+        "passwordCheck": "Password for check",
+        "changePassword": "Change password",
+        "phone": "Phone",
+        "smtpUrl": "Smtp url",
+        "saveProfile": "Save Profile",
+        "signature": "Signature"
+    }
+}

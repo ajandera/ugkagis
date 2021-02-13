@@ -18,9 +18,6 @@ app.controller('CategoriesCtrl', [
         $scope.categories = {};
         $scope.categoriesForm = {};
         $scope.dataLoaded = false;
-        $scope.parent = 1;
-        $scope.parentUp = 1;
-        $scope.rootParent = 1;
 
         var requestData = {};
         var config = {
@@ -30,12 +27,11 @@ app.controller('CategoriesCtrl', [
         };
 
         $scope.getData = function() {
-            $http.get('/api/v2/categories/'+$scope.parent, requestData, config)
+            $http.get('/api/v2/categories/', requestData, config)
                 .then(function (response) {
                     if(response.status === 200) {
                         $scope.categories = response.data.categories;
                         $scope.gridOptions.data = $scope.categories;
-                        $scope.parentUp = typeof $scope.categories[0] !== "undefined" ? $scope.categories[0].parent : response.data.parent;
                         $scope.dataLoaded = true;
                     } else {
                         $scope.responseDetails = "Data: " + response +
@@ -98,7 +94,6 @@ app.controller('CategoriesCtrl', [
                     width: "10%",
                     enableColumnResizing: false,
                     cellTemplate: '<div class="ui-grid-cell-contents"><div class="btn-group" role="group" aria-label="">' +
-                    '<a ng-click="grid.appScope.changeParent(grid, row)" class="btn btn-xs btn-primary" title="'+$filter('translate')('common.grid.activity.subTree')+'"><i class="glyphicon glyphicon-list-alt"></i></a>' +
                     '<a ng-click="grid.appScope.editCategories(grid, row)" class="btn btn-xs btn-warning" title="'+$filter('translate')('common.grid.activity.edit')+'"><i class="glyphicon glyphicon-pencil"></i></a>' +
                     '<a ng-click="grid.appScope.deleteCategories(grid, row)" class="btn btn-danger btn-xs" title="'+$filter('translate')('common.grid.activity.delete')+'"><i class="glyphicon glyphicon-trash"></i></a></div></div>',
                     headerCellClass: $scope.highlightFilteredHeader,
@@ -311,16 +306,6 @@ app.controller('CategoriesCtrl', [
                     };
                 }
             });
-        };
-
-        $scope.changeParent = function( grid, row ) {
-            $scope.parent = row.entity.id;
-            $scope.getData();
-        };
-
-        $scope.reset = function(id) {
-            $scope.parent = id;
-            $scope.getData();
         };
 
         $scope.sweetAlert = function (title, text, type, color) {

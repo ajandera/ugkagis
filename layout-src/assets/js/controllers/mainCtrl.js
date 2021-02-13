@@ -1,4 +1,5 @@
 'use strict';
+
 /**
  * UGKAGIS Main Controller
  */
@@ -32,9 +33,9 @@ function ($rootScope,
           securityService,
           $http
     ) {
-
     var loginStorage = $window.localStorage.getItem('login');
     var path = $location.path();
+
     if (loginStorage === null) {
         $rootScope.securityInfo = {};
         $rootScope.isLoggedIn = false;
@@ -60,9 +61,11 @@ function ($rootScope,
     var $win = $($window), $body = $('body');
 
     $scope.horizontalNavbarCollapsed = true;
+
     $scope.menuInit = function (value) {
         $scope.horizontalNavbarCollapsed = value;
     };
+
     $scope.menuToggle = function (value) {
         $scope.horizontalNavbarCollapsed = !$scope.horizontalNavbarCollapsed;
     };
@@ -77,6 +80,7 @@ function ($rootScope,
             $body.removeClass("app-boxed-page");
         }
     });
+
     $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
 
         //stop loading bar on stateChangeSuccess
@@ -146,8 +150,8 @@ function ($rootScope,
             $scope.loading_save = false;
             // stop loading
         }, 500);
-
     };
+
     $scope.setLayout = function () {
 
         $scope.app.layout.isNavbarFixed = false;
@@ -216,6 +220,7 @@ function ($rootScope,
             height: e[a + 'Height']
         };
     };
+
     // function that adds information in a scope of the height and width of the page
     $scope.getWindowDimensions = function () {
         return {
@@ -223,6 +228,7 @@ function ($rootScope,
             'w': viewport().width
         };
     };
+
     // Detect when window is resized and set some variables
     $scope.$watch($scope.getWindowDimensions, function (newValue, oldValue) {
         $scope.windowHeight = newValue.h;
@@ -247,7 +253,6 @@ function ($rootScope,
 
     // Apply on resize
     $win.on('resize', function () {
-
         $scope.$apply();
         if ($scope.isLargeDevice) {
             $('#app .main-content').css({
@@ -265,7 +270,7 @@ function ($rootScope,
                 $window.localStorage.removeItem('login');
                 $rootScope.isLoggedIn = false;
                 $rootScope.securityInfo = {};
-                window.location.href = '/#/jobs/list';
+                window.location.href = '/#/home';
             }, function (data, status, header, config) {
                 console.log("Error - can't logout");
             });

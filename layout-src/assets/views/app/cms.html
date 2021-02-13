@@ -1,11 +1,11 @@
 <!-- start: BREADCRUMB -->
 <div class="breadcrumb-wrapper">
-    <h4 class="mainTitle no-margin" translate="sidebar.nav.seniority.TITLE">Seniority</h4>
+    <h4 class="mainTitle no-margin" translate="sidebar.nav.cms.TITLE">Seniority</h4>
     <div ncy-breadcrumb class="pull-right"></div>
 </div>
 <!-- end: BREADCRUMB -->
 <!-- start: SENIORITY -->
-<div ng-controller="SeniorityCtrl">
+<div ng-controller="CmsCtrl">
     <div class="preloader" ng-if="dataLoaded == false"></div>
     <div class="container-fluid container-fullw" ng-if="dataLoaded == true">
         <div class="row">
@@ -13,13 +13,13 @@
                 <div class="panel panel-white">
                     <div class="panel-body">
                         <div class="col-md-6">
-                            <h5 class="over-title margin-bottom-15"><span class="text-bold" translate="seniority.title">Seniority</span></h5>
+                            <h5 class="over-title margin-bottom-15"><span class="text-bold" translate="cms.title">Seniority</span></h5>
                         </div>
                         <div class="col-md-6">
-                            <a class="pull-right btn btn-primary" ng-click="addSeniority()"><i class="glyphicon glyphicon-plus"></i> <span translate="seniority.add">Add User</span></a>
+                            <a class="pull-right btn btn-primary" ng-click="addSeniority()"><i class="glyphicon glyphicon-plus"></i> <span translate="cms.add">Add User</span></a>
                         </div>
                         <div class="col-md-12 margin-top-30">
-                            <div id="seniorityGrid" ui-grid="gridOptions" class="uiGrid" ui-grid-selection ng-style="getTableHeight(400)"></div>
+                            <div id="cmsGrid" ui-grid="gridOptions" class="uiGrid" ui-grid-selection ng-style="getTableHeight(400)"></div>
                         </div>
                     </div>
                 </div>
@@ -35,12 +35,12 @@
         <div class="row margin-top-30">
             <form>
                 <div class="col-xs-12">
-                    <label translate="seniority.name" class="margin-top-15 control-label-required">Name</label>
-                    <input type="text" ng-model="seniorityForm.name" class="form-control">
+                    <label translate="cms.name" class="margin-top-15 control-label-required">Name</label>
+                    <input type="text" ng-model="cmsForm.name" class="form-control">
                 </div>
                 <div class="col-xs-12">
-                    <label translate="seniority.description" class="margin-top-15 control-label-required">Description</label>
-                    <textarea ng-model="seniorityForm.description" class="form-control"></textarea>
+                    <label translate="cms.description" class="margin-top-15 control-label-required">Description</label>
+                    <textarea ng-model="cmsForm.description" class="form-control"></textarea>
                 </div>
             </form>
         </div>

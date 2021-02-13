@@ -57,13 +57,13 @@ class DefaultEntities extends Command
         $user = new Users();
         $user->setName('Admin');
         $user->setCreated();
-        $user->setUsername('administrator@administrator.com');
+        $user->setUsername('ugkagis@tuke.sk');
         $user->setPassword($password);
         $user->setCreated();
         $user->setModified();
         $user->setRole(Users::ADMIN);
         $this->usersDao->save($user);
-        $output->writeln('<info>[Ok] - creted user: administrator@administrator.com / ' . $string . ' </info>');
+        $output->writeln('<info>[Ok] - created user: ugkagis@tuke.sk / ' . $string . ' </info>');
 
         $language = new Language();
         $language->setVisible(true);
@@ -76,6 +76,19 @@ class DefaultEntities extends Command
         $language->setUsersModified($user);
         $language->setModified();
         $this->languageDao->save($language);
+
+        $language = new Language();
+        $language->setVisible(true);
+        $language->setCode('sk');
+        $language->setTranslationCode('sk_SK');
+        $language->setName('Slovak');
+        $language->setDefaults(0);
+        $language->setCreated();
+        $language->setUsers($user);
+        $language->setUsersModified($user);
+        $language->setModified();
+        $this->languageDao->save($language);
+
         $output->writeln('<info>[Ok] - creted default language</info>');
     }
 }

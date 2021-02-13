@@ -14,8 +14,9 @@ app.service('securityService', function ($rootScope, $location, $http, $window) 
      * @returns {boolean}
      */
     this.isPermitted = function(functionality) {
+        console.log(rootScope.securityInfo);
         if(rootScope.securityInfo === null || angular.equals({}, rootScope.securityInfo)) {
-            $location.path('/jobs/list');
+            $location.path('/home');
         } else {
             if(typeof rootScope.securityInfo === 'undefined') {
                 $location.path('/home');
@@ -46,7 +47,7 @@ app.service('securityService', function ($rootScope, $location, $http, $window) 
     this.verifyAccessAllowed = function(functionality) {
         var permission = that.isPermitted(functionality);
         if(permission === false) {
-            $location.path('/app/home');
+            $location.path('/home');
         }
     };
 
@@ -60,13 +61,13 @@ app.service('securityService', function ($rootScope, $location, $http, $window) 
     
     this.encrypt = function(string) {
         // Encrypt String using CryptoJS AES
-        var encrypted = CryptoJS.AES.encrypt(string, 'dhkashdajk13221wqe');
+        var encrypted = CryptoJS.AES.encrypt(string, 'DRWERWER423423');
         return encrypted.toString();
     };
 
     this.decrypt = function(encrypted) {
         // Decrypt String using CryptoJS AES 
-        var decrypted = CryptoJS.AES.decrypt(encrypted, 'dhkashdajk13221wqe');
+        var decrypted = CryptoJS.AES.decrypt(encrypted, 'DRWERWER423423');
         return decrypted.toString(CryptoJS.enc.Utf8);
     };
 

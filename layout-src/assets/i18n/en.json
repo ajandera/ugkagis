@@ -59,7 +59,7 @@
             },
             "landing": {
                 "MAIN": "Landing Page"
-            },
+            }
         }
     },
     "footer": {
@@ -129,7 +129,8 @@
         "remember": "Remember me",
         "success": "success",
         "forgotPw": "Forgot Password?",
-        "restorePw": "Change your password"
+        "restorePw": "Change your password",
+        "signin": "Administration / Sign In"
     },
     "users": {
         "title": "Users",

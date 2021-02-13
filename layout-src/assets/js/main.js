@@ -1,7 +1,6 @@
 var app = angular.module('app', ['ugkagis']);
 app.run(['$rootScope', '$state', '$stateParams',
 function ($rootScope, $state, $stateParams) {
-
     // Attach Fastclick for eliminating the 300ms delay between a physical tap and the firing of a click event on mobile browsers
     FastClick.attach(document.body);
 
@@ -21,7 +20,7 @@ function ($rootScope, $state, $stateParams) {
             var check = false;
             if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
                 check = true;
-            };
+            }
             return check;
         })(),
         defaultLayout: {
@@ -31,7 +30,7 @@ function ($rootScope, $state, $stateParams) {
             isFooterFixed: false, // true if you want to initialize the template with fixed footer
             isBoxedPage: false, // true if you want to initialize the template with boxed layout
             theme: 'lyt2-theme-1', // indicate the theme chosen for your project
-            logo: 'assets/images/logo.png', // relative path of the project logo
+            logo: 'assets/images/logo.svg', // relative path of the project logo
             logoCollapsed: 'assets/images/logo-collapsed.png' // relative path of the collapsed logo
         },
         layout: ''

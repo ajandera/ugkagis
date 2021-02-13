@@ -10,8 +10,7 @@ app.controller('LoginCtrl', [
     '$rootScope',
     '$location',
     '$window',
-    '$state',
-    function ($scope, $http, $filter, SweetAlert, $rootScope, $location, $window, $state) {
+    function ($scope, $http, $filter, SweetAlert, $rootScope, $location, $window) {
 
     var vm = this;
     $scope.newEmpty = '';
@@ -70,7 +69,7 @@ app.controller('LoginCtrl', [
                 } else {
                     $rootScope.securityInfo = data.user;
                     $rootScope.isLoggedIn = true;
-                    $location.path('/app/home');
+                    $location.path('/app/categories');
                 }
             })
             .error(function (data, status, header, config) {
@@ -171,7 +170,7 @@ app.controller('LoginCtrl', [
         $http.post('/api/v2/security/check-token', { token: $location.search().token}, {'Content-Type': 'application/json;charset=utf-8;'})
             .success(function (data, status, headers, config) {
                 if (data.success !== true) {
-                    $location.path('/jobs/list');
+                    $location.path('/home');
                 }
             })
             .error(function (data, status, header, config) {

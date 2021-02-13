@@ -15,8 +15,8 @@ app.controller('CmsCtrl', [
     '$location',
     function ($rootScope, $scope, $http, SweetAlert, securityService, uiGridConstants, $filter, $timeout, $aside, $location) {
         $scope.showForm = false;
-        $scope.seniority = {};
-        $scope.seniorityForm = {};
+        $scope.cms = {};
+        $scope.cmsForm = {};
         $scope.dataLoaded = false;
 
         var requestData = {};
@@ -27,11 +27,11 @@ app.controller('CmsCtrl', [
         };
 
         $scope.getData = function() {
-            $http.get('/api/v2/seniority', requestData, config)
+            $http.get('/api/v2/cms', requestData, config)
                 .then(function (response) {
                     if(response.status === 200) {
-                        $scope.seniority = response.data.seniority;
-                        $scope.gridOptions.data = $scope.seniority;
+                        $scope.cms = response.data.cms;
+                        $scope.gridOptions.data = $scope.cms;
                         $scope.dataLoaded = true;
                     } else {
                         $scope.responseDetails = "Data: " + response +
@@ -46,7 +46,7 @@ app.controller('CmsCtrl', [
         };
 
         // fix for reload page
-        if($location.path() === '/app/seniority') {
+        if($location.path() === '/app/cms') {
             $scope.getData();
         }
 
@@ -72,17 +72,9 @@ app.controller('CmsCtrl', [
             columnDefs: [
                 {
                     field: 'name',
-                    displayName: $filter('translate')('seniority.name'),
+                    displayName: $filter('translate')('cms.name'),
                     enableColumnResizing: false,
-                    width: "40%",
-                    headerCellClass: $scope.highlightFilteredHeader,
-                    cellClass: "padding-left-20 padding-top-5"
-                },
-                {
-                    field: 'description',
-                    displayName: $filter('translate')('seniority.description'),
-                    enableColumnResizing: false,
-                    width: "50%",
+                    width: "90%",
                     headerCellClass: $scope.highlightFilteredHeader,
                     cellClass: "padding-left-20 padding-top-5"
                 },
@@ -107,7 +99,7 @@ app.controller('CmsCtrl', [
         $scope.gridOptions.onRegisterApi = function( gridApi ) {
             $scope.gridApi = gridApi;
             gridApi.selection.on.rowSelectionChanged($scope, function(row){
-                $scope.seniorityRow = row.entity;
+                $scope.cmsRow = row.entity;
                 $scope.showForm = true;
             });
         };
@@ -147,7 +139,7 @@ app.controller('CmsCtrl', [
             }, function (isConfirm) {
                 if (isConfirm) {
                     $http.delete(
-                        "/api/v2/seniority/"+row.entity.id,
+                        "/api/v2/cms/"+row.entity.id,
                         {},
                         {'Content-Type': 'application/json; charset=UTF-8'}
                     ).then(function(dataFromServer) {
@@ -189,23 +181,23 @@ app.controller('CmsCtrl', [
                 size: 'm',
                 backdrop: true,
                 controller: function ($scope, $uibModalInstance) {
-                    $scope.form = {title: $filter('translate')('seniority.add')};
+                    $scope.form = {title: $filter('translate')('cms.add')};
                     $scope.ok = function (e) {
                         $scope.dataLoaded = false;
 
                         //validate submit form
-                        if($scope.validateSubmit($scope.seniorityForm) === false) {
+                        if($scope.validateSubmit($scope.cmsForm) === false) {
                             return;
                         }
 
                         // to do fill data object to send
                         var dataObject = {
-                            name: $scope.seniorityForm.name,
-                            description: $scope.seniorityForm.description
+                            name: $scope.cmsForm.name,
+                            description: $scope.cmsForm.description
                         };
 
                         $http.post(
-                            "/api/v2/seniority",
+                            "/api/v2/cms",
                             dataObject,
                             {'Content-Type': 'application/json; charset=UTF-8'}
                         ).then(function(dataFromServer) {
@@ -229,12 +221,12 @@ app.controller('CmsCtrl', [
                                 '#007AFF'
                             );
                         });
-                        $scope.seniorityForm = {};
+                        $scope.cmsForm = {};
                         $uibModalInstance.close();
                         e.stopPropagation();
                     };
                     $scope.cancel = function (e) {
-                        $scope.seniorityForm = {};
+                        $scope.cmsForm = {};
                         $uibModalInstance.dismiss();
                         e.stopPropagation();
                     };
@@ -250,25 +242,25 @@ app.controller('CmsCtrl', [
                 size: 'm',
                 backdrop: true,
                 controller: function ($scope, $uibModalInstance) {
-                    $scope.seniorityForm = row.entity;
-                    $scope.form = {title: $scope.seniorityForm.name};
+                    $scope.cmsForm = row.entity;
+                    $scope.form = {title: $scope.cmsForm.name};
                     $scope.ok = function (e) {
                         $scope.dataLoaded = false;
 
                         //validate submit form
-                        if($scope.validateSubmit($scope.seniorityForm) === false) {
+                        if($scope.validateSubmit($scope.cmsForm) === false) {
                             return;
                         }
 
                         // to do fill data object to send
                         var dataObject = {
                             id: row.entity.id,
-                            name: $scope.seniorityForm.name,
-                            description: $scope.seniorityForm.description
+                            name: $scope.cmsForm.name,
+                            description: $scope.cmsForm.description
                         };
 
                         $http.put(
-                            "/api/v2/seniority",
+                            "/api/v2/cms",
                             dataObject,
                             {'Content-Type': 'application/json; charset=UTF-8'}
                         ).then(function(dataFromServer) {
@@ -292,12 +284,12 @@ app.controller('CmsCtrl', [
                                 '#007AFF'
                             );
                         });
-                        $scope.seniorityForm = {};
+                        $scope.cmsForm = {};
                         $uibModalInstance.close();
                         e.stopPropagation();
                     };
                     $scope.cancel = function (e) {
-                        $scope.seniorityForm = {};
+                        $scope.cmsForm = {};
                         $uibModalInstance.dismiss();
                         e.stopPropagation();
                     };

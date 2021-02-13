@@ -40,7 +40,8 @@ app.constant('JS_REQUIRES', {
 
         //*** Services
         'securityService': 'assets/js/services/securityService.js',
-        'stringAndDates': 'assets/js/services/stringAndDates.js'
+        'stringAndDates': 'assets/js/services/stringAndDates.js',
+        'geocoder': 'assets/js/services/geocoder.js'
 
     },
     //*** angularJS Modules
@@ -65,9 +66,6 @@ app.constant('JS_REQUIRES', {
     }, {
         name: 'monospaced.elastic',
         files: ['bower_components/angular-elastic/elastic.js']
-    }, {
-        name: 'ngMap',
-        files: ['bower_components/ngmap/build/scripts/ng-map.min.js']
     }, {
         name: 'chart.js',
         files: ['bower_components/angular-chart.js-1.0.0/dist/angular-chart.min.js']

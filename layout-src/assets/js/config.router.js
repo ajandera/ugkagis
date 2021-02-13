@@ -41,11 +41,11 @@ app.config([
         // APPLICATION ROUTES
         // -----------------------------------
         // For any unmatched url, redirect to /jobs/list
-        $urlRouterProvider.otherwise("/home");
+        $urlRouterProvider.otherwise("/login/signin");
 
         // Set up the states
         $stateProvider.state('app', {
-            url: "/home",
+            url: "/app",
             templateUrl: "assets/views/app/app.html",
             resolve: loadSequence('chartjs', 'chart.js', 'loginCtrl'),
             abstract: true
@@ -91,7 +91,7 @@ app.config([
             }
         }).state('app.cms', {
             url: "/cms",
-            templateUrl: "assets/views/app/cmd.html",
+            templateUrl: "assets/views/app/cms.html",
             resolve: loadSequence('cmsCtrl', 'securityService'),
             title: 'Cms',
             ncyBreadcrumb: {
@@ -122,29 +122,28 @@ app.config([
             url: '/restore',
             templateUrl: "assets/views/login/login_restore.html",
             resolve: loadSequence('loginCtrl')
+        }).state('login.signin', {
+            url: '/signin',
+            templateUrl: "assets/views/login/sign.html",
+            resolve: loadSequence('loginCtrl')
         }).state('front', {// Front module route
             url: '/home',
             templateUrl: "assets/views/front/layout.html",
             resolve: loadSequence('jquery-appear-plugin', 'ngAppear', 'countTo', 'mainFrontCtrl'),
             abstract: true
-        }).state('front.jobs', {
+        }).state('front.list', {
             url: '/list',
-            title: 'Jobs',
-            templateUrl: "assets/views/front/jobsList.html",
-            resolve: loadSequence('jobsListCtrl')
+            title: 'List',
+            templateUrl: "assets/views/front/list.html",
+            resolve: loadSequence('listCtrl')
         }).state('front.detail', {
             url: '/:id',
-            templateUrl: "assets/views/front/jobsDetail.html",
-            resolve: loadSequence('jobsDetailCtrl')
+            templateUrl: "assets/views/front/detail.html",
+            resolve: loadSequence('detailCtrl')
         }).state('front.notFound', {
             url: '/not-found',
             title: '404 Not Found',
             templateUrl: "assets/views/utility_404.html"
-        }).state('front.gdpr', {
-            url: '/gdpr',
-            title: 'GDPR',
-            templateUrl: "assets/views/front/gdpr.html",
-            resolve: loadSequence('gdprCtrl')
         });
 
         // Generates a resolve object previously configured in constant.JS_REQUIRES (config.constant.js)

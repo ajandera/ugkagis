@@ -36,18 +36,7 @@ app.controller('ProfileCtrl', [
                             phone: data.phone,
                             name: data.name,
                             surname: data.surname,
-                            smtpUrl: data.smtp_url,
-                            smtpUser: data.smtp_user,
-                            smtpPassword: data.smtp_password,
-                            smtpPort: data.smtp_port,
-                            signature: data.signature,
-                            notifications: {
-                                job_partner: data.notifications === null ? false : data.notifications.job_partner,
-                                job_operator: data.notifications === null ? false : data.notifications.job_operator,
-                                job_update_partner: data.notifications === null ? false : data.notifications.job_update_partner,
-                                job_update_operator: data.notifications === null ? false : data.notifications.job_update_operator,
-                                job_reaction: data.notifications === null ? false : data.notifications.job_reaction
-                            }
+                            signature: data.signature
                         };
                         $scope.loader = false;
                     }
@@ -69,19 +58,7 @@ app.controller('ProfileCtrl', [
                 phone: $scope.personal.phone,
                 name: $scope.personal.name,
                 surname: $scope.personal.surname,
-                smtpUrl: $scope.personal.smtpUrl,
-                smtpUser: $scope.personal.smtpUser,
-                smtpPassword: $scope.personal.smtpPassword,
-                smtpPort: $scope.personal.smtpPort,
-                signature: $scope.personal.signature,
-                enabled: true,
-                notifications: {
-                    job_partner: $scope.personal.notifications.job_partner,
-                    job_operator: $scope.personal.notifications.job_operator,
-                    job_update_partner: $scope.personal.notifications.job_update_partner,
-                    job_update_operator: $scope.personal.notifications.job_update_operator,
-                    job_reaction: $scope.personal.notifications.job_reaction
-                }
+                enabled: true
             };
 
             $http.put('/api/v2/users', requestData, config)
@@ -151,33 +128,5 @@ app.controller('ProfileCtrl', [
                 "<hr />config: " + config;
             });
         };
-
-        $scope.smtpTest = function() {
-            $http.get(
-                "/api/v2/users/smtp/test",
-                {},
-                {'Content-Type': 'application/json; charset=UTF-8'}
-            ).then(function(dataFromServer) {
-                if(dataFromServer.data.success === false) {
-                    $scope.flashMessage = {
-                        class: 'danger',
-                        text: dataFromServer.data.error
-                    };
-                    $scope.dataLoaded = true;
-                } else {
-                    $scope.flashMessage = {
-                        class: 'success',
-                        text: $filter('translate')('common.record.send')
-                    };
-                    $scope.getData();
-                }
-            }, function(data, status, headers, config) {
-                $scope.dataLoaded = true;
-                $scope.flashMessage = {
-                    class: 'danger',
-                    text: $filter('translate')('common.record.failed')
-                };
-            });
-        }
     }
 ]);

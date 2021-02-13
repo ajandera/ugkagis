@@ -43,55 +43,12 @@
                                                     <label translate="profile.phone" class="margin-top-15">Phone</label> <span ng-if="phoneFail == true" translate="partners.badPhone" class="error">Only Numbers are allowed</span>
                                                     <phone-number output-model="personal.phone" validate-fn="" output-validate="phoneFail"></phone-number>
                                                 </div>
-                                                <div class="col-xs-12 col-sm-6">
-                                                    <label translate="profile.smtpUrl" class="margin-top-15">Smtp url</label>
-                                                    <input type="text" ng-model="personal.smtpUrl" class="form-control">
-                                                </div>
-                                                <div class="col-xs-12 col-sm-6">
-                                                    <label translate="profile.smtpPort" class="margin-top-15">Smtp port</label>
-                                                    <input type="text" ng-model="personal.smtpPort" class="form-control">
-                                                </div>
-                                                <div class="col-xs-12 col-sm-6">
-                                                    <label translate="profile.smtpUser" class="margin-top-15">Smtp user</label>
-                                                    <input type="text" ng-model="personal.smtpUser" class="form-control">
-                                                </div>
-                                                <div class="col-xs-12 col-sm-6">
-                                                    <label translate="profile.smtpPassword" class="margin-top-15">Smtp password</label>
-                                                    <input type="password" ng-model="personal.smtpPassword" class="form-control">
-                                                </div>
-                                                <div class="col-xs-12 col-md-6">
-                                                    <div class="checkbox clip-check check-primary checkbox-inline">
-                                                        <input type="checkbox" ng-model="personal.notifications.job_partner" id="notification1">
-                                                        <label for="notification1" translate="profile.notifications.job.create.partner" class="margin-top-15">Send a notification when partner create a new job</label>
-                                                    </div>
-                                                    <br>
-                                                    <div class="checkbox clip-check check-primary checkbox-inline">
-                                                        <input type="checkbox" ng-model="personal.notifications.job_operator" id="notification2">
-                                                        <label for="notification2" translate="profile.notifications.job.create.operator" class="margin-top-15">Send a notification when operator create a new job</label>
-                                                    </div>
-                                                    <br>
-                                                    <div class="checkbox clip-check check-primary checkbox-inline">
-                                                        <input type="checkbox" ng-model="personal.notifications.job_update_partner" id="notification3">
-                                                        <label for="notification3" translate="profile.notifications.job.update.partner" class="margin-top-15">Send a notification when partner update an existing job</label>
-                                                    </div>
-                                                    <br>
-                                                    <div class="checkbox clip-check check-primary checkbox-inline">
-                                                        <input type="checkbox" ng-model="personal.notifications.job_update_operator" id="notification4">
-                                                        <label for="notification4" translate="profile.notifications.job.update.operator" class="margin-top-15">Send a notification when operator update an existing job</label>
-                                                    </div>
-                                                    <br>
-                                                    <div class="checkbox clip-check check-primary checkbox-inline">
-                                                        <input type="checkbox" ng-model="personal.notifications.job_reaction" id="notification5">
-                                                        <label for="notification5" translate="profile.notifications.job.reaction" class="margin-top-15">Send a notification when a job reactions created</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-12 col-sm-6">
-                                                    <label translate="profile.signature" class="margin-top-15">Signature</label>
-                                                    <summernote height="300" ng-model="personal.signature"></summernote>
+                                                <div class="col-xs-12 col-sm-12">
+                                                    <label translate="profile.description" class="margin-top-15">Description</label>
+                                                    <summernote height="300" ng-model="personal.description"></summernote>
                                                 </div>
                                                 <div class="col-xs-12 text-right margin-top-10">
                                                     <button type="submit" class="btn btn-primary" translate="profile.saveProfile">Save Profile</button>
-                                                    <div class="btn btn-defautt" translate="profile.testSmtp" ng-click="smtpTest()">Test Smtp</div>
                                                 </div>
                                             </form>
                                         </div>

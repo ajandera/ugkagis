@@ -1,0 +1,47 @@
+<!-- start: FORGOT -->
+<div class="row" ng-controller="LoginCtrl">
+    <div class="ext-box" ng-style="{'margin-top': marginTop}">
+        <div class="int-box">
+            <div class="main-login login">
+                <div class="col-xs-12 margin-top-20">
+                    <div class="logo text-center">
+                        <img src="assets/images/logo.svg" alt="{{app.name}}" class="img-responsive" />
+                    </div>
+                    <p class="text-center text-dark text-bold text-extra-large margin-top-15 loginTextGray">
+                        <span class="logIn" translate="login.signin">Administration / Sign In</span>
+                    </p>
+                    <div class="loginDivider"></div>
+                    <!-- start: LOGIN BOX -->
+                    <div class="preloader" ng-show="loginFormDataLoading"></div>
+                    <div class="box-login" ng-hide="loginFormDataLoading">
+                        <form class="form-forgot" ng-hide="loginFormDataLoading">
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="username" placeholder="Email" ng-model="username" ng-style="newEmpty">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="password" placeholder="Password" ng-model="password">
+                            </div>
+                            <div class="form-actions">
+                                <button
+                                        ng-click="login()"
+                                        type="submit"
+                                        class="btn btn-success btn-block"
+                                        translate="login.submit">
+                                    Submit
+                                </button>
+                            </div>
+                        </form>
+                        <!-- start: COPYRIGHT -->
+                        <div class="copyright">
+                            {{app.year}} &copy; {{ app.name }} by {{ app.author }}.
+                        </div>
+                        <!-- end: COPYRIGHT -->
+                    </div>
+                    <!-- end: LOGIN BOX -->
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!-- end: FORGOT -->

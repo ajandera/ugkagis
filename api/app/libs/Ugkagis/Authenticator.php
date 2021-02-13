@@ -35,30 +35,16 @@ class Authenticator
      * @param bool $socialLogin
      * @throws AuthenticationException
      */
-    public function login($id = null, $password = null, $role, $socialLogin = false)
+    public function login($id = null, $password = null, $role)
     {
         $this->user->logout(true);
 
-        if($socialLogin == true) {
-            $user = $this->userManager->getUserByUserName($id, $role);
-            if($user == null) {
-                throw new AuthenticationException('Social login failed');
-            } else {
-                if ($user->getEnabled() === true) {
-                    $id = new Identity($user->getId(), $user->getRole(), ['name' => $user->getFullName(), 'username' => $user->getUsername()]);
-                } else {
-                    throw new AuthenticationException('Account has been disabled.');
-                }
-            }
-        } else {
-            if (!$id instanceof IIdentity) {
-                $id = $this->userManager->authenticate(func_get_args(), $role);
-            }
+        if (!$id instanceof IIdentity) {
+            $id = $this->userManager->authenticate(func_get_args(), $role);
         }
 
         $this->user->getStorage()->setIdentity($id);
         $this->user->getStorage()->setAuthenticated(true);
-        $this->user->onLoggedIn($this);
     }
 
 }

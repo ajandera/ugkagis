@@ -12623,6 +12623,7 @@ nav.links a {
 }
 .main-login .logo > img {
   display: inline-block !important;
+  height: 100px;
 }
 .main-login .box-login, .main-login .box-forgot, .main-login .box-register {
   overflow: hidden;

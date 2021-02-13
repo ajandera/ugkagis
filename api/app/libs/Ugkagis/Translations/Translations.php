@@ -33,7 +33,7 @@ class Translations
      * @param array $translations
      * @return string
      */
-    public static function getTranslation(int $language, string $translations) :string
+    public static function getTranslation(int $language, $translations) :string
     {
         $data = json_decode($translations);
         if (is_object($data)) {

@@ -13,7 +13,8 @@ app.controller('CategoriesCtrl', [
     '$timeout',
     '$aside',
     '$location',
-    function ($rootScope, $scope, $http, SweetAlert, securityService, uiGridConstants, $filter, $timeout, $aside, $location) {
+    'FileUploader',
+    function ($rootScope, $scope, $http, SweetAlert, securityService, uiGridConstants, $filter, $timeout, $aside, $location, FileUploader) {
         $scope.showForm = false;
         $scope.categories = {};
         $scope.categoriesForm = {};
@@ -220,6 +221,8 @@ app.controller('CategoriesCtrl', [
                                 );
                                 $scope.dataLoaded = true;
                             } else {
+                                $scope.categoriesForm.name = '';
+                                $scope.categoriesForm.description = '';
                                 $scope.getData();
                             }
                         }, function(data, status, headers, config) {
@@ -231,12 +234,12 @@ app.controller('CategoriesCtrl', [
                                 '#007AFF'
                             );
                         });
-                        $scope.categoriesForm = {};
                         $uibModalInstance.close();
                         e.stopPropagation();
                     };
                     $scope.cancel = function (e) {
-                        $scope.categoriesForm = {};
+                        $scope.categoriesForm.name = '';
+                        $scope.categoriesForm.description = '';
                         $uibModalInstance.dismiss();
                         e.stopPropagation();
                     };
@@ -355,4 +358,39 @@ app.controller('CategoriesCtrl', [
                 return true;
             }
         }
+
+        var uploader = $scope.uploader = new FileUploader({
+            url: '/api/v2/documents/uploader'
+        });
+
+        // a sync filter
+        uploader.filters.push({
+            name: 'syncFilter',
+            fn: function(item /*{File|FileLikeObject}*/, options) {
+                console.log('syncFilter');
+                return this.queue.length < 10;
+            }
+        });
+
+        // an async filter
+        uploader.filters.push({
+            name: 'asyncFilter',
+            fn: function(item /*{File|FileLikeObject}*/, options, deferred) {
+                console.log('asyncFilter');
+                setTimeout(deferred.resolve, 1e3);
+            }
+        });
+
+        // an max size filter
+        uploader.filters.push({
+            name: 'enforceMaxFileSize',
+            fn: function (item) {
+                return item.size <= 5242880; // 5 MiB to bytes
+            }
+        });
+
+        // CALLBACKS
+        uploader.onCompleteAll = function() {
+            $scope.getData();
+        };
     }]);

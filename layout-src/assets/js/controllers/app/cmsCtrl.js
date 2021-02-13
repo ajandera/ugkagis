@@ -125,7 +125,7 @@ app.controller('CmsCtrl', [
             };
         };
 
-        $scope.deleteSeniority = function(grid, row) {
+        $scope.deleteCms = function(grid, row) {
             SweetAlert.swal({
                 title: $filter('translate')('common.sure'),
                 text: $filter('translate')('common.delete')+" "+ row.entity.name,
@@ -173,12 +173,12 @@ app.controller('CmsCtrl', [
             });
         };
 
-        $scope.addSeniority = function () {
+        $scope.addCms = function () {
             $aside.open({
-                templateUrl: 'addSeniority.html',
+                templateUrl: 'addCms.html',
                 scope: $scope,
                 placement: 'right',
-                size: 'm',
+                size: 'lq',
                 backdrop: true,
                 controller: function ($scope, $uibModalInstance) {
                     $scope.form = {title: $filter('translate')('cms.add')};
@@ -234,12 +234,12 @@ app.controller('CmsCtrl', [
             });
         };
 
-        $scope.editSeniority = function (grid, row) {
+        $scope.editCms = function (grid, row) {
             $aside.open({
-                templateUrl: 'addSeniority.html',
+                templateUrl: 'addCms.html',
                 scope: $scope,
                 placement: 'right',
-                size: 'm',
+                size: 'lq',
                 backdrop: true,
                 controller: function ($scope, $uibModalInstance) {
                     $scope.cmsForm = row.entity;

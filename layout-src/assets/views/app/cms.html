@@ -16,10 +16,10 @@
                             <h5 class="over-title margin-bottom-15"><span class="text-bold" translate="cms.title">Seniority</span></h5>
                         </div>
                         <div class="col-md-6">
-                            <a class="pull-right btn btn-primary" ng-click="addSeniority()"><i class="glyphicon glyphicon-plus"></i> <span translate="cms.add">Add User</span></a>
+                            <a class="pull-right btn btn-primary" ng-click="addCms()"><i class="glyphicon glyphicon-plus"></i> <span translate="cms.add">Add User</span></a>
                         </div>
                         <div class="col-md-12 margin-top-30">
-                            <div id="cmsGrid" ui-grid="gridOptions" class="uiGrid" ui-grid-selection ng-style="getTableHeight(400)"></div>
+                            <div id="cmsGrid" ui-grid="gridOptions" class="uiGrid" ui-grid-selection ng-style="getTableHeight(700)"></div>
                         </div>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
         </div>
     </div>
 </div>
-<script type="text/ng-template" id="addSeniority.html">
+<script type="text/ng-template" id="addCms.html">
     <div class="modal-header">
         <h3 class="modal-title">{{ form.title }}</h3>
     </div>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="col-xs-12">
                     <label translate="cms.description" class="margin-top-15 control-label-required">Description</label>
-                    <textarea ng-model="cmsForm.description" class="form-control"></textarea>
+                    <summernote height="400" ng-model="cmsForm.description"></summernote>
                 </div>
             </form>
         </div>
